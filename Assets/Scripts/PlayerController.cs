@@ -13,7 +13,8 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
     private bool isJumping;
 
-    public GameManager jumpTracker;
+    //public GameManager jumpTracker;
+    public PruebaClase pc;
     
     void Start()
     {
@@ -25,11 +26,31 @@ public class PlayerController : MonoBehaviour
     {
         moveX = Input.GetAxis("Horizontal");
 
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        //if (Input.GetButtonDown("Jump") && isGrounded)
+        //{
+        //    isJumping = true;
+        //    jumpTracker.ActivateScrollbar();
+        //    print("Está saltando");
+        //}
+
+        if(Input.GetKeyDown(KeyCode.Space))
         {
-            isJumping = true;
-            jumpTracker.ActivateScrollbar();
-            print("Está saltando");
+            
+            rb.velocity = new Vector2(rb.velocity.x, 10);
+            pc.activeBarra();
+
+            Debug.Log("Salto Activado");
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            if (rb.velocity.y > 0)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y / 2);
+            }
+            
+            pc.DetenBarra();
+            
         }
     }
 
@@ -39,28 +60,28 @@ public class PlayerController : MonoBehaviour
        
         rb.velocity = new Vector2(moveX * moveSpeed, rb.velocity.y);
 
-        if(isJumping)
-        {
-            rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-            isJumping = false;
-        }
+        //if(isJumping)
+        //{
+        //    rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+        //    isJumping = false;
+        //}
         
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Terrain"))
-        {
-            isGrounded = true;
-            jumpTracker.DeactivateScrollbar();
-        }
-    }
+    //void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Terrain"))
+    //    {
+    //        isGrounded = true;
+    //        //jumpTracker.DeactivateScrollbar();
+    //    }
+    //}
 
-    void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Terrain"))
-        {
-            isGrounded = false;
-        }
-    }
+    //void OnCollisionExit2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Terrain"))
+    //    {
+    //        isGrounded = false;
+    //    }
+    //}
 }
