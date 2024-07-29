@@ -10,15 +10,13 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rb;
     private float moveX;
 
-    private bool isGrounded;
-    private bool isJumping;
-
     //public GameManager jumpTracker;
-    public PruebaClase pc;
+    public GameManager gm;
     
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        gm = GameObject.FindWithTag("GameM").GetComponent<GameManager>();
 
     }
 
@@ -26,18 +24,11 @@ public class PlayerController : MonoBehaviour
     {
         moveX = Input.GetAxis("Horizontal");
 
-        //if (Input.GetButtonDown("Jump") && isGrounded)
-        //{
-        //    isJumping = true;
-        //    jumpTracker.ActivateScrollbar();
-        //    print("Está saltando");
-        //}
-
         if(Input.GetKeyDown(KeyCode.Space))
         {
             
             rb.velocity = new Vector2(rb.velocity.x, 10);
-            pc.activeBarra();
+            gm.activeBarra();
 
             Debug.Log("Salto Activado");
         }
@@ -49,7 +40,7 @@ public class PlayerController : MonoBehaviour
                 rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y / 2);
             }
             
-            pc.DetenBarra();
+            gm.DetenBarra();
             
         }
     }
@@ -60,28 +51,9 @@ public class PlayerController : MonoBehaviour
        
         rb.velocity = new Vector2(moveX * moveSpeed, rb.velocity.y);
 
-        //if(isJumping)
-        //{
-        //    rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-        //    isJumping = false;
-        //}
+        
         
     }
 
-    //void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Terrain"))
-    //    {
-    //        isGrounded = true;
-    //        //jumpTracker.DeactivateScrollbar();
-    //    }
-    //}
-
-    //void OnCollisionExit2D(Collision2D collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Terrain"))
-    //    {
-    //        isGrounded = false;
-    //    }
-    //}
+    
 }

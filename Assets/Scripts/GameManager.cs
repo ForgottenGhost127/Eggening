@@ -6,13 +6,16 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public PlayerController player;
-    public Scrollbar jumpScroll;
+    public Scrollbar scrollbar;
+    public float valorBarra;
 
     public float maxHeightReached;
 
     void Start()
     {
         maxHeightReached = player.transform.position.y;
+        valorBarra = 0;
+        scrollbar.size = valorBarra;
     }
 
     void Update()
@@ -23,17 +26,37 @@ public class GameManager : MonoBehaviour
         }
 
         float normalizedHeight = (maxHeightReached - player.transform.position.y) / maxHeightReached;
-        jumpScroll.size = normalizedHeight;
+        
     }
 
-    public void ActivateScrollbar()
+    public void activeBarra()
     {
-        jumpScroll.gameObject.SetActive(true);
-        maxHeightReached = player.transform.position.y;
+        StartCoroutine(controlBarra());
+
+    }
+    public void DetenBarra()
+    {
+        StopAllCoroutines();
+
     }
 
-    public void DeactivateScrollbar()
+    IEnumerator controlBarra()
     {
-        jumpScroll.gameObject.SetActive(false);
+        valorBarra = 0;
+        scrollbar.size = valorBarra;
+        while (true)
+        {
+            valorBarra += Time.deltaTime;
+            scrollbar.size = valorBarra;
+            if (valorBarra > 1)
+            {
+                break;
+            }
+
+
+            yield return null;
+        }
+
     }
+
 }
