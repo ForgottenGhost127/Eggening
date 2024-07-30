@@ -8,9 +8,9 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 10f;
 
     public Rigidbody2D rb;
-    private float moveX;
+    public float moveX;
 
-    //public GameManager jumpTracker;
+    
     public GameManager gm;
     
     void Start()
