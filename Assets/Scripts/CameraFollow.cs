@@ -5,8 +5,8 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     public Transform target;
-    public Transform targetL;
-    public Transform targetR;
+    //public Transform targetL;
+    //public Transform targetR;
     public Vector3 offset;
     public float smoothSpeed = 0.125f;
     private GameObject player;
@@ -29,9 +29,10 @@ public class CameraFollow : MonoBehaviour
         {
             Debug.LogError("Player not found!");
         }
-        target = GameObject.FindGameObjectWithTag("FocoC").transform;
+        //target = GameObject.FindGameObjectWithTag("FocoC").transform;
+        target = GameObject.FindGameObjectWithTag("Player").transform;
 
-        
+
     }
 
 
@@ -93,7 +94,7 @@ public class CameraFollow : MonoBehaviour
         Gizmos.DrawCube(transform.position, new Vector2(ventanaX, ventanaY) * 2);
 
         Gizmos.color = new Color(1, 0, 0, 0.5f);
-        Gizmos.DrawCube(transform.position - new Vector3 (offset.x, offset.y, 0), new Vector2(ventanaX, ventanaY) * 2);
+        Gizmos.DrawCube(transform.position - new Vector3 (offset.x, offset.y, offset.z), new Vector2(ventanaX, ventanaY) * 2);
     }
 }
 

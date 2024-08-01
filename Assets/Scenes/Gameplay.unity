@@ -876,13 +876,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  targetL: {fileID: 914694876}
-  targetR: {fileID: 72070447}
   offset: {x: 0, y: 2, z: -10}
-  smoothSpeed: 0.02
-  ventanaX: 4
+  smoothSpeed: 0.024
+  ventanaX: 3
   ventanaY: 2
-  valorOffsetX: 8
+  valorOffsetX: 9
 --- !u!212 &516813941766972481
 SpriteRenderer:
   m_ObjectHideFlags: 0
