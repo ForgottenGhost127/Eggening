@@ -879,8 +879,10 @@ MonoBehaviour:
   targetL: {fileID: 914694876}
   targetR: {fileID: 72070447}
   offset: {x: 0, y: 2, z: -10}
-  ventanaX: 5
-  ventanaY: 5
+  smoothSpeed: 0.02
+  ventanaX: 4
+  ventanaY: 2
+  valorOffsetX: 8
 --- !u!212 &516813941766972481
 SpriteRenderer:
   m_ObjectHideFlags: 0
