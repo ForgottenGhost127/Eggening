@@ -10,19 +10,28 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rb;
     public float moveX;
 
-    
+    public SpriteRenderer spriteRend;
     public GameManager gm;
     
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         gm = GameObject.FindWithTag("GameM").GetComponent<GameManager>();
+        spriteRend = GetComponent<SpriteRenderer>();
 
     }
 
     public void Update()
     {
         moveX = Input.GetAxis("Horizontal");
+
+        if(moveX < 0)
+        {
+            spriteRend.flipX = false;
+        }else if (moveX > 0)
+        {
+            spriteRend.flipX = true;
+        }
 
         if(Input.GetKeyDown(KeyCode.Space))
         {
