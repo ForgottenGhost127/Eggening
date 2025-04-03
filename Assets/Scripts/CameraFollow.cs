@@ -5,8 +5,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     public Transform target;
-    //public Transform targetL;
-    //public Transform targetR;
+    
     public Vector3 offset;
     public float smoothSpeed = 0.125f;
     private GameObject player;
@@ -29,38 +28,14 @@ public class CameraFollow : MonoBehaviour
         {
             Debug.LogError("Player not found!");
         }
-        //target = GameObject.FindGameObjectWithTag("FocoC").transform;
+        
         target = GameObject.FindGameObjectWithTag("Player").transform;
 
 
     }
 
 
-    //void FixedUpdate()
-    //{
-    //    if (target != null)
-    //    {
-    //        if ((transform.position.x > target.position.x + ventanaX) || (transform.position.x < target.position.x - ventanaX))
-    //        {
-    //            if(pCon.moveX > 0)
-    //            {
-    //                target = targetL;
-    //            }
-    //            else if (pCon.moveX < 0)
-    //            {
-    //                target = targetR;
-    //            }
-    //            else
-    //            {
-    //                target = player.transform;
-    //            }
-    //            Vector3 desiredPosition = target.position + new Vector3(offset.x, offset.y, offset.z);
-    //            Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
-    //            transform.position = smoothedPosition;
-    //        }
-
-    //    }
-    //}
+    
 
     void FixedUpdate()
     {
