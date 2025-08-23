@@ -8,6 +8,7 @@ TagManager:
   - GameM
   - FocoC
   - FocoC2
+  - Bush
   layers:
   - Default
   - TransparentFX
