@@ -1101,7 +1101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7240199, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1309,9 +1309,9 @@ MonoBehaviour:
   target: {fileID: 0}
   offset: {x: 0, y: 2, z: -10}
   smoothSpeed: 0.024
+  valorOffsetX: 9
   ventanaX: 3
   ventanaY: 2
-  valorOffsetX: 9
 --- !u!1 &2091288453
 GameObject:
   m_ObjectHideFlags: 0
@@ -1774,9 +1774,9 @@ MonoBehaviour:
   moveSpeed: 5
   jumpForce: 10
   rb: {fileID: 2526541480914527248}
-  moveX: 0
   spriteRend: {fileID: 0}
   gm: {fileID: 0}
+  moveX: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

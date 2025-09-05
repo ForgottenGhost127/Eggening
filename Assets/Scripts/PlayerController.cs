@@ -4,41 +4,73 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    #region Fields
+    [Header("Movement Settings")]
     public float moveSpeed = 5f;
     public float jumpForce = 10f;
 
+    [Header("Components")]
     public Rigidbody2D rb;
-    public float moveX;
-
     public SpriteRenderer spriteRend;
     public GameManager gm;
-    
+
+    [Header("Input")]
+    public float moveX;
+    #endregion
+
+    #region Unity Callbacks
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        gm = GameObject.FindWithTag("GameM").GetComponent<GameManager>();
-        spriteRend = GetComponent<SpriteRenderer>();
-
+        InitializeComponents();
     }
 
     public void Update()
     {
-        moveX = Input.GetAxis("Horizontal");
+        HandleInput();
+        HandleSpriteFlipping();
+        HandleJumpInput();
+    }
 
-        if(moveX < 0)
+    void FixedUpdate()
+    {
+        HandleMovement();
+    }
+    #endregion
+
+    #region Public Methods
+    #endregion
+
+    #region Private Methods
+    private void InitializeComponents()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        gm = GameObject.FindWithTag("GameM").GetComponent<GameManager>();
+        spriteRend = GetComponent<SpriteRenderer>();
+    }
+
+    private void HandleInput()
+    {
+        moveX = Input.GetAxis("Horizontal");
+    }
+
+    private void HandleSpriteFlipping()
+    {
+        if (moveX < 0)
         {
             spriteRend.flipX = false;
-        }else if (moveX > 0)
+        }
+        else if (moveX > 0)
         {
             spriteRend.flipX = true;
         }
+    }
 
-        if(Input.GetKeyDown(KeyCode.Space))
+    private void HandleJumpInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            
             rb.velocity = new Vector2(rb.velocity.x, 10);
             gm.activeBarra();
-
             Debug.Log("Salto Activado");
         }
 
@@ -48,21 +80,16 @@ public class PlayerController : MonoBehaviour
             {
                 rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y / 2);
             }
-            
+
             gm.DetenBarra();
-            
         }
     }
 
-
-    void FixedUpdate()
+    private void HandleMovement()
     {
-       
         rb.velocity = new Vector2(moveX * moveSpeed, rb.velocity.y);
-
-        
-        
     }
+    #endregion
 
-    
+
 }
