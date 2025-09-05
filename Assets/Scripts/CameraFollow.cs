@@ -33,9 +33,7 @@ public class CameraFollow : MonoBehaviour
 
 
     }
-
-
-    
+  
 
     void FixedUpdate()
     {
